@@ -1,0 +1,31 @@
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Maven ###
+target/
+/.mvn/
+/mvnw
+/mvnw.cmd
+
+### Vaadin Generated Code ###
+/src/main/frontend/index.html
+/src/main/frontend/generated/
+/src/main/bundles/
+/tsconfig.json
+/package-lock.json
+/package.json
+/types.d.ts
+/vite.config.ts
+/vite.generated.ts
