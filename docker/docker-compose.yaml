@@ -1,0 +1,33 @@
+services:
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_MODELS=/root/.ollama/models
+    volumes:
+      - ollama-2:/root/.ollama
+
+  pgvector:
+    image: pgvector/pgvector:0.7.0-pg16
+    container_name: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - PGUSER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "postgres" ]
+      interval: 5s
+      timeout: 60s
+      retries: 5
+    volumes:
+      - pgvector:/var/lib/postgresql/data
+
+volumes:
+  ollama-2:
+  pgvector:
