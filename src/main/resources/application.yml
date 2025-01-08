@@ -96,7 +96,7 @@ spring:
       # A threshold value of 0.0 means any similarity is accepted or disable the similarity threshold filtering.
       # A threshold value of 1.0 means an exact match is required.
       similarity-threshold: 0.5
-      # the top 'k' similar results to return.
+      # the top 'k' search results that have the same similarity.
       top-k: 4
 
   datasource:
