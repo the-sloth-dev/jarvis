@@ -10,8 +10,6 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 import dev.thesloth.jarvis.services.ChatService;
 import org.vaadin.firitin.components.messagelist.MarkdownMessage;
 
-import java.util.UUID;
-
 @PageTitle("Chat")
 @Route(value = "", layout = MainLayout.class)
 public class ChatView extends VerticalLayout {
@@ -19,12 +17,10 @@ public class ChatView extends VerticalLayout {
     private static final String TEXT_AREA_FOCUS = "requestAnimationFrame(() => this.querySelector('vaadin-text-area').focus() )";
 
     private final ChatService chatService;
-    private String chatId;
 
     private MessageInput messageInput = new MessageInput();
 
     public ChatView(ChatService chatService) {
-        this.chatId = UUID.randomUUID().toString();
         this.chatService = chatService;
 
         setPadding(false);
@@ -42,7 +38,6 @@ public class ChatView extends VerticalLayout {
         );
 
         newChatButton.addClickListener(e -> {
-            chatId = UUID.randomUUID().toString();
             messageList.removeAll();
             focusMessageInput();
         });
@@ -65,7 +60,7 @@ public class ChatView extends VerticalLayout {
             messageList.add(question);
             messageList.add(answer);
 
-            this.chatService.chat(chatId, userQuestion, answer::appendMarkdownAsync);
+            this.chatService.chat(userQuestion, answer::appendMarkdownAsync);
         });
 
         var scroller = new Scroller(messageList);

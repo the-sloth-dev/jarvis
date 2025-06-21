@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.function.Consumer;
 
-import static org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY;
-
 @Service
 public class ChatService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -21,16 +19,15 @@ public class ChatService {
         this.chatClient = chatClient;
     }
 
-    public void chat(String chatId, String userQuestion, Consumer<String> consumer) {
+    public void chat(String userQuestion, Consumer<String> consumer) {
         this.chatClient
                 .prompt()
-                .advisors(a -> a.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId))
                 .user(userQuestion)
                 .stream()
                 .content()
-                .doOnComplete(() -> logger.info("[{}] Chat completed", chatId))
+                .doOnComplete(() -> logger.info("chat completed"))
                 .onErrorComplete(err -> {
-                    String message = String.format("[%s] Chat failed to answer question: %s", chatId, userQuestion);
+                    String message = String.format("chat failed to answer question: %s", userQuestion);
                     logger.error(message, err);
                     return true;
                 })
