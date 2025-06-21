@@ -45,7 +45,7 @@ spring:
       chat:
         # The name of the model to use.
         # Supported models: https://ollama.com/library
-        model: ${CHAT_MODEL:llama3} # llama3.2:3b
+        model: ${CHAT_MODEL:llama3}
         options:
           # Reduces the probability of generating nonsense.
           # A higher value (e.g., 100) will give more diverse answers,
