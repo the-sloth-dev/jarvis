@@ -5,8 +5,8 @@ import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.theme.Theme;
 import dev.thesloth.jarvis.advisors.LogAdvisor;
 import dev.thesloth.jarvis.advisors.UserContextAdvisor;
+import dev.thesloth.jarvis.advisors.UserContextMemoryAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
@@ -79,9 +79,9 @@ public class JarvisApplication implements AppShellConfigurator {
 		return chatClientBuilder
 				.defaultSystem(systemPrompt)
 				.defaultAdvisors(
-						PromptChatMemoryAdvisor // Chat Memory
+						UserContextMemoryAdvisor // Chat Memory
 								.builder(chatMemory)
-								.withSystemTextAdvise(EMPTY)
+								.withUserTextAdvise(EMPTY)
 								.withOrder(1)
 								.build(),
 						UserContextAdvisor // RAG
