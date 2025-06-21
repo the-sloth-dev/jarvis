@@ -59,10 +59,10 @@ Your primary goal is to provide accurate, concise, and relevant answers strictly
   **Memory:**
   ```xml
   <memory>
-      User wants to improve their software engineering skills to pass Google tech interviews.
+      User wants to improve their software engineering skills to pass tech interviews.
   </memory>
   ```
-  **Response:** "Your focus is on improving software engineering skills to pass Google tech interviews."
+  **Response:** "Your focus is on improving software engineering skills to pass tech interviews."
 
 - **Query:** "Can you remind me of my project goals?"
   **Memory:**
