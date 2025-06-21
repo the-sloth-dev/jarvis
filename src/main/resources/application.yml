@@ -68,8 +68,9 @@ spring:
         #         IVFFlat, so the index can be created without any data in the table.
         index-type: HNSW
         # Search distance type
-        # Defaults to COSINE_DISTANCE. But if vectors are normalized to length 1, you can use
-        # EUCLIDEAN_DISTANCE or NEGATIVE_INNER_PRODUCT for best performance.
+        # - COSINE_DISTANCE: used for text embeddings, word embeddings, and high-dimensional data.
+        # - EUCLIDEAN_DISTANCE: used in image similarity, physical distance computations, and clustering algorithms.
+        # - NEGATIVE_INNER_PRODUCT: used in machine learning models, recommendation systems, and certain ANN (Approximate Nearest Neighbor) searches.
         distance-type: COSINE_DISTANCE
         # Embeddings dimension. If not specified explicitly the PgVectorStore will retrieve the dimensions
         # form the provided EmbeddingModel. Dimensions are set to the embedding column the on table creation.
