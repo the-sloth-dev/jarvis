@@ -4,6 +4,8 @@ vaadin:
 
 logging:
   # control application logging.
+  file:
+    name: /tmp/jarvis.log
   level:
     dev:
       thesloth: DEBUG
